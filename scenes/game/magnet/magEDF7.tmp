@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://xl1erkm3c7ao"]
+
+[ext_resource type="Script" path="res://scenes/magnet/magnet.gd" id="1_0f4b7"]
+[ext_resource type="Texture2D" uid="uid://djxouw7cxgo4q" path="res://assets/textures/magnet.svg" id="1_3vlb1"]
+
+[node name="Magnet" type="CharacterBody2D"]
+collision_mask = 15
+motion_mode = 1
+script = ExtResource("1_0f4b7")
+
+[node name="Magnet" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3vlb1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(32, 28, 32, 12, 32, -12, 32, -28, 0, -32, -12, -30, -22, -24, -28, -16, -32, -4, -32, 4, -28, 16, -22, 24, -12, 30, 0, 32)

@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://s4cwjdqpl634"]
+
+[ext_resource type="Texture2D" uid="uid://ckhb55e2a5np6" path="res://assets/textures/stars/stars_1.svg" id="1_0kjfr"]
+[ext_resource type="Texture2D" uid="uid://ccx6jxk52f4ys" path="res://assets/textures/stars/stars_2.svg" id="2_bx1fa"]
+[ext_resource type="Texture2D" uid="uid://cwlblfir7ichn" path="res://assets/textures/stars/stars_3.svg" id="3_gq7g2"]
+[ext_resource type="Texture2D" uid="uid://dcsx18xd31078" path="res://assets/textures/stars/stars_4.svg" id="4_47s0o"]
+[ext_resource type="Texture2D" uid="uid://civoflkg7gntx" path="res://assets/textures/stars/stars_5.svg" id="5_ns2bt"]
+[ext_resource type="Texture2D" uid="uid://c0v5v1arwq1bj" path="res://assets/textures/stars/stars_6.svg" id="6_1xfqr"]
+
+[sub_resource type="Animation" id="Animation_jf4lq"]
+resource_name = "twinkle"
+length = 20.0
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stars1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.2, 3.6, 5.8, 8.6, 11, 11.8, 13.4, 15.6, 17.4, 18.6, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stars2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.8, 4.2, 5.2, 7.2, 9.2, 10.4, 13, 15.2, 16.2, 18.4, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Stars3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2.8, 5, 5.8, 8.2, 9.4, 11.6, 13, 15, 17.2, 18.8, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stars4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-0.05, 1.8, 3.55, 6.2, 8.6, 10.4, 12.6, 14.4, 16.6, 18.2, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Stars5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4, 2.8, 5.6, 8, 10, 11, 13.4, 15.2, 16.6, 18.6, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Stars6:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2, 3.2, 6.2, 7.4, 11.6, 12.6, 15.4, 17, 19.2, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqm1k"]
+_data = {
+"twinkle": SubResource("Animation_jf4lq")
+}
+
+[node name="Stars" type="Node2D"]
+
+[node name="Stars1" type="Sprite2D" parent="."]
+position = Vector2(0, 40)
+texture = ExtResource("1_0kjfr")
+centered = false
+
+[node name="Stars2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 40)
+texture = ExtResource("2_bx1fa")
+centered = false
+
+[node name="Stars3" type="Sprite2D" parent="."]
+position = Vector2(0, 40)
+texture = ExtResource("3_gq7g2")
+centered = false
+
+[node name="Stars4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.027027)
+position = Vector2(0, 40)
+texture = ExtResource("4_47s0o")
+centered = false
+
+[node name="Stars5" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 40)
+texture = ExtResource("5_ns2bt")
+centered = false
+
+[node name="Stars6" type="Sprite2D" parent="."]
+position = Vector2(0, 40)
+texture = ExtResource("6_1xfqr")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "twinkle"
+libraries = {
+"": SubResource("AnimationLibrary_kqm1k")
+}

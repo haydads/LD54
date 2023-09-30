@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://ldr2fa3ieyd0"]
+
+[ext_resource type="Script" path="res://scenes/game/health/health_bar.gd" id="1_7hyvl"]
+[ext_resource type="Texture2D" uid="uid://brpm7fmh8rctp" path="res://assets/textures/health/full_health.svg" id="2_kn8hh"]
+
+[node name="HealthBar" type="HBoxContainer"]
+offset_left = 832.0
+offset_top = 736.0
+offset_right = 1216.0
+offset_bottom = 800.0
+alignment = 2
+script = ExtResource("1_7hyvl")
+
+[node name="5" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_kn8hh")
+stretch_mode = 5
+
+[node name="4" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_kn8hh")
+stretch_mode = 5
+
+[node name="3" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_kn8hh")
+stretch_mode = 5
+
+[node name="2" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_kn8hh")
+stretch_mode = 5
+
+[node name="1" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_kn8hh")
+stretch_mode = 5
