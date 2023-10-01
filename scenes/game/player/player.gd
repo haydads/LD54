@@ -14,7 +14,7 @@ func _physics_process(delta : float):
 	var direction = (distance).normalized()
 	velocity = direction * speed
 	if is_invulnerable:
-		%Sprite2D.modulate = Color(1, 1, 1, 0.5)
+		%Sprite2D.modulate = Color(0.8, 0.8, 0.8, 0.8)
 	else:
 		%Sprite2D.modulate = Color(1, 1, 1, 1)
 	

@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfwww0h0qx3lr"]
+
+[ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="1_yc7wb"]
+[ext_resource type="PackedScene" uid="uid://s4cwjdqpl634" path="res://scenes/stars/stars.tscn" id="2_c0gw4"]
+[ext_resource type="Texture2D" uid="uid://s32ryl3irbvs" path="res://assets/textures/retry_normal.svg" id="2_ct1uj"]
+[ext_resource type="Texture2D" uid="uid://3inaeain251f" path="res://assets/textures/retry_over.svg" id="3_gxcg3"]
+[ext_resource type="Texture2D" uid="uid://b3jn4m6td5g7g" path="res://assets/textures/menu_normal.svg" id="4_lekxb"]
+[ext_resource type="Texture2D" uid="uid://cxfmlgn0ikjsd" path="res://assets/textures/menu_over.svg" id="5_r2dyh"]
+[ext_resource type="Texture2D" uid="uid://7nj78b71hg03" path="res://assets/textures/game_over.svg" id="6_ujq5e"]
+[ext_resource type="PackedScene" uid="uid://deypj5qj72lkh" path="res://scenes/wormhole/wormhole.tscn" id="8_xvk74"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ccwo2"]
+font_size = 40
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yc7wb")
+
+[node name="Stars" parent="." instance=ExtResource("2_c0gw4")]
+
+[node name="Body" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 0
+offset_top = 200.0
+offset_right = 1280.0
+offset_bottom = 522.0
+text = "You scored 0 points in 0 seconds"
+label_settings = SubResource("LabelSettings_ccwo2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -508.0
+offset_top = -284.0
+offset_right = 509.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Retry" type="TextureButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_ct1uj")
+texture_pressed = ExtResource("3_gxcg3")
+texture_hover = ExtResource("3_gxcg3")
+texture_disabled = ExtResource("2_ct1uj")
+texture_focused = ExtResource("2_ct1uj")
+
+[node name="MainMenu" type="TextureButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("4_lekxb")
+texture_pressed = ExtResource("5_r2dyh")
+texture_hover = ExtResource("5_r2dyh")
+texture_disabled = ExtResource("4_lekxb")
+texture_focused = ExtResource("4_lekxb")
+
+[node name="GameOver" type="Sprite2D" parent="."]
+position = Vector2(640, 150)
+texture = ExtResource("6_ujq5e")
+
+[node name="WormHole" parent="GameOver" instance=ExtResource("8_xvk74")]
+position = Vector2(55, 0)

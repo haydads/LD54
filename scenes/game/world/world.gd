@@ -15,11 +15,15 @@ var available_health_pickups : int = 3
 
 
 func _ready():
+	Global.score = 0
+	Global.time = 0
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	%Magnet.player = %Player
 	%Player.magnet = %Magnet
 	%Player.hit.connect(_on_player_hit.bind())
 	%Time.second.connect(_on_second_passed.bind())
 	%Coin.collected.connect(_on_coin_collected.bind())
+	%HealthBar.game_over.connect(_on_game_over.bind())
 
 
 func _physics_process(delta):
@@ -94,7 +98,7 @@ func _on_second_passed(second : int):
 	%Score.add()
 	@warning_ignore("integer_division")
 	target_asteroids = min(floor(second / 5) + 1, 20)
-	print("%s out of %s" % [%Asteroids.get_child_count(), target_asteroids])
+	#print("%s out of %s" % [%Asteroids.get_child_count(), target_asteroids])
 	
 	match second:
 		30: %Player.speed = 350
@@ -112,3 +116,10 @@ func _on_second_passed(second : int):
 			if not has_health_pickup:
 				if second % 8 == 0:
 					_add_health_pickup()
+
+
+func _on_game_over():
+	Global.time = %Time.value
+	Global.score = %Score.value
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	SceneManager.transition_to("GameOver")

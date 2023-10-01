@@ -6,6 +6,5 @@ func _ready():
 
 
 func _on_body_entered(body):
-	print(body)
 	if body is Asteroid:
 		body.queue_free()

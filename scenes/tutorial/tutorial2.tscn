@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://ck2ve2hbkmyp3"]
+
+[ext_resource type="PackedScene" uid="uid://s4cwjdqpl634" path="res://scenes/stars/stars.tscn" id="1_1gw3k"]
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial2.gd" id="1_u34nu"]
+[ext_resource type="Texture2D" uid="uid://bvsiq1phbsjsg" path="res://assets/textures/tutorial.svg" id="2_g0v3y"]
+[ext_resource type="PackedScene" uid="uid://deypj5qj72lkh" path="res://scenes/wormhole/wormhole.tscn" id="3_aehoe"]
+[ext_resource type="Texture2D" uid="uid://cai82utp74jo0" path="res://assets/textures/next_arrow_normal.svg" id="4_ffvc6"]
+[ext_resource type="Texture2D" uid="uid://dwa4liiryi8sg" path="res://assets/textures/next_arrow_over.svg" id="5_g34xu"]
+[ext_resource type="PackedScene" uid="uid://c5ftep8hd6gsf" path="res://scenes/game/player/player.tscn" id="7_gxmic"]
+[ext_resource type="PackedScene" uid="uid://xl1erkm3c7ao" path="res://scenes/game/magnet/magnet.tscn" id="8_ghuts"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_meqrm"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_05vq4"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_o2cdq"]
+font_size = 24
+font_color = Color(1, 0, 0, 1)
+
+[node name="Tutorial2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u34nu")
+
+[node name="Stars" parent="." instance=ExtResource("1_1gw3k")]
+
+[node name="Tutorial" type="Sprite2D" parent="."]
+position = Vector2(252, 68)
+texture = ExtResource("2_g0v3y")
+
+[node name="WormHole" parent="Tutorial" instance=ExtResource("3_aehoe")]
+position = Vector2(-22, 1)
+scale = Vector2(0.7, 0.7)
+
+[node name="Text1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 131.0
+offset_right = 1243.0
+offset_bottom = 278.0
+text = "Use the magnet to move the spaceship. Be careful not to
+let the magnet and spaceship touch though, otherwise 
+the spaceship will take damage!"
+label_settings = SubResource("LabelSettings_meqrm")
+vertical_alignment = 1
+
+[node name="Next" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1192.0
+offset_top = 670.0
+offset_right = 1265.0
+offset_bottom = 777.0
+texture_normal = ExtResource("4_ffvc6")
+texture_pressed = ExtResource("5_g34xu")
+texture_hover = ExtResource("5_g34xu")
+texture_disabled = ExtResource("4_ffvc6")
+texture_focused = ExtResource("4_ffvc6")
+
+[node name="Back" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = 669.0
+offset_right = 86.0
+offset_bottom = 776.0
+texture_normal = ExtResource("4_ffvc6")
+texture_pressed = ExtResource("5_g34xu")
+texture_hover = ExtResource("5_g34xu")
+texture_disabled = ExtResource("4_ffvc6")
+texture_focused = ExtResource("4_ffvc6")
+flip_h = true
+
+[node name="Text2" type="Label" parent="."]
+layout_mode = 0
+offset_top = 727.0
+offset_right = 1280.0
+offset_bottom = 778.0
+text = "(The magnet will follow your mouse)"
+label_settings = SubResource("LabelSettings_05vq4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageWarning" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = 679.0
+offset_right = 1280.0
+offset_bottom = 730.0
+text = "The spaceship would have just taken damage!"
+label_settings = SubResource("LabelSettings_o2cdq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("7_gxmic")]
+unique_name_in_owner = true
+position = Vector2(291, 461)
+
+[node name="Magnet" parent="." instance=ExtResource("8_ghuts")]
+unique_name_in_owner = true
+position = Vector2(915, 478)

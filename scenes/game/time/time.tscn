@@ -12,8 +12,10 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="Time" type="Label"]
+offset_right = 110.0
+offset_bottom = 22.0
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_7epc1")
-text = "TIME : 1m 6s"
+text = "TIME : 0s"
 vertical_alignment = 1
 script = ExtResource("1_dqqdv")

@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://s8t6co0ku8xd"]
+
+[ext_resource type="PackedScene" uid="uid://s4cwjdqpl634" path="res://scenes/stars/stars.tscn" id="1_1nhu0"]
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial4.gd" id="1_8k1eq"]
+[ext_resource type="Texture2D" uid="uid://bvsiq1phbsjsg" path="res://assets/textures/tutorial.svg" id="2_u21f3"]
+[ext_resource type="PackedScene" uid="uid://deypj5qj72lkh" path="res://scenes/wormhole/wormhole.tscn" id="3_i7ygl"]
+[ext_resource type="Texture2D" uid="uid://gx8sifb0fh3m" path="res://assets/textures/play_normal.svg" id="4_1n541"]
+[ext_resource type="Texture2D" uid="uid://d3ycepas2tmsv" path="res://assets/textures/play_over.svg" id="5_yyc1k"]
+[ext_resource type="Texture2D" uid="uid://cai82utp74jo0" path="res://assets/textures/next_arrow_normal.svg" id="6_cd4jk"]
+[ext_resource type="Texture2D" uid="uid://dwa4liiryi8sg" path="res://assets/textures/next_arrow_over.svg" id="7_vnj8c"]
+[ext_resource type="PackedScene" uid="uid://c5ftep8hd6gsf" path="res://scenes/game/player/player.tscn" id="8_h83po"]
+[ext_resource type="PackedScene" uid="uid://xl1erkm3c7ao" path="res://scenes/game/magnet/magnet.tscn" id="9_o4uur"]
+[ext_resource type="PackedScene" uid="uid://ckf18i6np50jp" path="res://scenes/game/pickup/coin/coin.tscn" id="11_of7et"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtk8f"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_e4aos"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_q6gk2"]
+font_size = 24
+font_color = Color(1, 0, 0, 1)
+
+[node name="Tutorial4" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8k1eq")
+
+[node name="Stars" parent="." instance=ExtResource("1_1nhu0")]
+
+[node name="Tutorial" type="Sprite2D" parent="."]
+position = Vector2(252, 68)
+texture = ExtResource("2_u21f3")
+
+[node name="WormHole" parent="Tutorial" instance=ExtResource("3_i7ygl")]
+position = Vector2(-22, 1)
+scale = Vector2(0.7, 0.7)
+
+[node name="Play" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 384.0
+offset_top = -116.0
+offset_right = 605.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_1n541")
+texture_pressed = ExtResource("4_1n541")
+texture_hover = ExtResource("5_yyc1k")
+stretch_mode = 5
+
+[node name="Back" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = 669.0
+offset_right = 86.0
+offset_bottom = 776.0
+texture_normal = ExtResource("6_cd4jk")
+texture_pressed = ExtResource("7_vnj8c")
+texture_hover = ExtResource("7_vnj8c")
+texture_disabled = ExtResource("6_cd4jk")
+texture_focused = ExtResource("6_cd4jk")
+flip_h = true
+
+[node name="Text1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 131.0
+offset_right = 1243.0
+offset_bottom = 278.0
+text = "Scoring is based on time and how many coins you collect.
+If youre low on health, hearts will spawn and can heal
+the spaceship."
+label_settings = SubResource("LabelSettings_rtk8f")
+vertical_alignment = 1
+
+[node name="Pickups" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Coin" parent="Pickups" instance=ExtResource("11_of7et")]
+unique_name_in_owner = true
+position = Vector2(640, 480)
+
+[node name="Player" parent="." instance=ExtResource("8_h83po")]
+unique_name_in_owner = true
+position = Vector2(384, 544)
+
+[node name="Magnet" parent="." instance=ExtResource("9_o4uur")]
+unique_name_in_owner = true
+position = Vector2(832, 352)
+
+[node name="Text2" type="Label" parent="."]
+layout_mode = 0
+offset_top = 736.0
+offset_right = 1280.0
+offset_bottom = 787.0
+text = "(Hearts are rare and limited)"
+label_settings = SubResource("LabelSettings_e4aos")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageWarning" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = 679.0
+offset_right = 1280.0
+offset_bottom = 730.0
+text = "Careful, the spaceship would have just taken damage!"
+label_settings = SubResource("LabelSettings_q6gk2")
+horizontal_alignment = 1
+vertical_alignment = 1

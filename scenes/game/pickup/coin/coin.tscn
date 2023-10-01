@@ -28,14 +28,14 @@ _data = {
 }
 
 [node name="Coin" type="Area2D"]
-scale = Vector2(1.02255, 1.02255)
+scale = Vector2(1.03443, 1.03443)
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_xiee2")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-7.15256e-07, -4.76837e-07)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-0.0466566, 0.0510011)
+scale = Vector2(0.233862, 0.244535)
 texture = ExtResource("1_c4s4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

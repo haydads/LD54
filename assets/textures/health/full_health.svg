@@ -5,6 +5,6 @@
         <path d="M15.393,6.214C18.628,0.056 25.098,0.056 28.332,3.135C31.567,6.214 31.567,12.371 28.332,18.528C26.068,23.146 20.245,27.764 15.393,30.843C10.541,27.764 4.719,23.146 2.454,18.528C-0.78,12.371 -0.78,6.214 2.454,3.135C5.689,0.056 12.159,0.056 15.393,6.214Z" style="fill:url(#_Radial1);"/>
     </g>
     <defs>
-        <radialGradient id="_Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-15.3786,18.1279,-15.8468,-17.5923,23.0691,7.18178)"><stop offset="0" style="stop-color:rgb(255,205,200);stop-opacity:1"/><stop offset="0.16" style="stop-color:rgb(255,150,146);stop-opacity:1"/><stop offset="0.5" style="stop-color:rgb(255,85,82);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(255,0,0);stop-opacity:1"/></radialGradient>
+        <radialGradient id="_Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-15.3786,18.1279,-15.8468,-17.5923,23.0691,7.18178)"><stop offset="0" style="stop-color:rgb(255,109,93);stop-opacity:1"/><stop offset="0.5" style="stop-color:rgb(255,85,82);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(255,0,0);stop-opacity:1"/></radialGradient>
     </defs>
 </svg>

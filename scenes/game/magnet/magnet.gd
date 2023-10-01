@@ -18,5 +18,5 @@ func _physics_process(_delta : float):
 	#move_and_collide(velocity * delta)
 	look_at(player.position)
 	
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
 	pass

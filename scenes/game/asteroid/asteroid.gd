@@ -63,8 +63,8 @@ func get_random_rotation():
 func get_random_velocity():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
-	velocity.x = random.randf_range(0, 1.0) * speed
-	velocity.y = random.randf_range(0, 1.0) * speed
+	velocity.x = random.randf_range(-1.0, 1.0) * speed
+	velocity.y = random.randf_range(-1.0, 1.0) * speed
 
 
 func remove_asteroid():

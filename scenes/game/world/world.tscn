@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ldr2fa3ieyd0" path="res://scenes/game/health/health_bar.tscn" id="6_hfbyb"]
 [ext_resource type="PackedScene" uid="uid://dcvjqmxnr7v61" path="res://scenes/game/time/time.tscn" id="8_712wo"]
 [ext_resource type="PackedScene" uid="uid://5t3n8r45u5kc" path="res://scenes/game/score/score.tscn" id="10_logqd"]
+[ext_resource type="Texture2D" uid="uid://b3yyixlsu2s7i" path="res://assets/textures/frame.svg" id="11_lhkn5"]
 [ext_resource type="PackedScene" uid="uid://deypj5qj72lkh" path="res://scenes/wormhole/wormhole.tscn" id="11_onpob"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_334cl"]
@@ -18,7 +19,6 @@ bounce = 5.0
 [sub_resource type="Animation" id="Animation_i8rrp"]
 resource_name = "wormhole_spawn_1"
 length = 4.0
-step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 18.8496]
+"values": [0.0, 12.5664]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -88,7 +88,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_ckyoq"]
 resource_name = "wormhole_spawn_2"
 length = 4.5
-step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -404,19 +403,8 @@ _data = {
 "wormhole_spawn_5": SubResource("Animation_km667")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk506"]
-bg_color = Color(0.117647, 0.117647, 0.117647, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkdrx"]
-bg_color = Color(0.117647, 0.117647, 0.117647, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="LabelSettings" id="LabelSettings_s1sl5"]
+font_size = 20
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_esi73")
@@ -427,7 +415,7 @@ collision_mask = 6
 script = ExtResource("2_bk67g")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Void"]
-polygon = PackedVector2Array(1280, 0, 1280, 800, 0, 800, 0, 0, -1024, 0, -1024, 2048, 2560, 2048, 2560, -1024, -1024, -1024, -1024, 0)
+polygon = PackedVector2Array(1408, -128, 1408, 928, -128, 928, -128, -128, -1024, 0, -1024, 2048, 2560, 2048, 2560, -1024, -1024, -1024, -1024, 0, -128, -128, 0, -128)
 
 [node name="Stars" parent="." instance=ExtResource("2_4ejt8")]
 
@@ -440,11 +428,11 @@ collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_334cl")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(64, 64, 0, 64, 0, 800, 1280, 800, 1280, 0, 0, 0, 0, 64, 1216, 64, 1216, 736, 64, 736)
+polygon = PackedVector2Array(16, 16, -128, 64, -128, 928, 1408, 928, 1408, -128, -128, -128, -128, 64, 16, 16, 1264, 16, 1264, 784, 16, 784)
 
-[node name="Polygon2D" type="Polygon2D" parent="Walls"]
-color = Color(0.0784314, 0.0784314, 0.0784314, 1)
-polygon = PackedVector2Array(64, 64, 1216, 64, 1216, 736, 64, 736, 64, 64, 0, 0, 0, 800, 1280, 800, 1280, 0, 0, 0)
+[node name="Frame" type="Sprite2D" parent="."]
+position = Vector2(640, 400)
+texture = ExtResource("11_lhkn5")
 
 [node name="WormHole" parent="." instance=ExtResource("11_onpob")]
 unique_name_in_owner = true
@@ -476,40 +464,33 @@ libraries = {
 "": SubResource("AnimationLibrary_tg1dm")
 }
 
-[node name="Health" type="PanelContainer" parent="."]
-offset_left = 1024.0
-offset_top = 8.0
-offset_right = 1216.0
-offset_bottom = 56.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_nk506")
+[node name="Interface" type="HBoxContainer" parent="."]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 64.0
 
-[node name="HealthBar" parent="Health" instance=ExtResource("6_hfbyb")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Score" parent="Interface/HBoxContainer" instance=ExtResource("10_logqd")]
 unique_name_in_owner = true
 layout_mode = 2
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_s1sl5")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Interface"]
+layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="Time" type="PanelContainer" parent="."]
-offset_left = 64.0
-offset_top = 8.0
-offset_right = 182.0
-offset_bottom = 56.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_mkdrx")
-
-[node name="Margin" type="MarginContainer" parent="Time"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Time/Margin"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Time" parent="Time/Margin/HBoxContainer" instance=ExtResource("8_712wo")]
+[node name="Time" parent="Interface/HBoxContainer2" instance=ExtResource("8_712wo")]
 unique_name_in_owner = true
 layout_mode = 2
+label_settings = SubResource("LabelSettings_s1sl5")
 
-[node name="Score" parent="Time/Margin/HBoxContainer" instance=ExtResource("10_logqd")]
+[node name="HealthBar" parent="Interface" instance=ExtResource("6_hfbyb")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
