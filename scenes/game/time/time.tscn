@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcvjqmxnr7v61"]
+
+[ext_resource type="Script" path="res://scenes/game/time/time.gd" id="1_dqqdv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7epc1"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Time" type="Label"]
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_7epc1")
+text = "TIME : 1m 6s"
+vertical_alignment = 1
+script = ExtResource("1_dqqdv")

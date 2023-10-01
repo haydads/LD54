@@ -30,7 +30,7 @@ theme/custom_font="res://assets/fonts/share_tech_mono.ttf"
 2d_physics/layer_2="ship"
 2d_physics/layer_3="asteroids"
 2d_physics/layer_4="walls"
-2d_physics/layer_5="wormhole"
+2d_physics/layer_5="pickups"
 2d_physics/layer_6="void"
 
 [physics]

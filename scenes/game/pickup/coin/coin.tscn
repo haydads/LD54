@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckf18i6np50jp"]
+
+[ext_resource type="Texture2D" uid="uid://dwjaa4ilmqg20" path="res://assets/textures/coin/coin.svg" id="1_c4s4m"]
+[ext_resource type="Script" path="res://scenes/game/pickup/coin/coin.gd" id="1_xiee2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8frfe"]
+radius = 19.0
+
+[sub_resource type="Animation" id="Animation_yhi0i"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0bir4"]
+_data = {
+"pulse": SubResource("Animation_yhi0i")
+}
+
+[node name="Coin" type="Area2D"]
+scale = Vector2(1.02255, 1.02255)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_xiee2")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-7.15256e-07, -4.76837e-07)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_c4s4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8frfe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "pulse"
+libraries = {
+"": SubResource("AnimationLibrary_0bir4")
+}

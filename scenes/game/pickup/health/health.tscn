@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bat7h51kgp20j"]
+
+[ext_resource type="Script" path="res://scenes/game/pickup/health/health.gd" id="1_marsb"]
+[ext_resource type="Texture2D" uid="uid://brpm7fmh8rctp" path="res://assets/textures/health/full_health.svg" id="2_xa2py"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8frfe"]
+radius = 19.0
+
+[sub_resource type="Animation" id="Animation_yhi0i"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0bir4"]
+_data = {
+"pulse": SubResource("Animation_yhi0i")
+}
+
+[node name="RestoreHealth" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_marsb")
+
+[node name="Health" type="Sprite2D" parent="."]
+texture = ExtResource("2_xa2py")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8frfe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "pulse"
+libraries = {
+"": SubResource("AnimationLibrary_0bir4")
+}

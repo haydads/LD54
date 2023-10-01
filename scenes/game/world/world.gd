@@ -9,14 +9,17 @@ var score : int = 0
 var player
 var magnet
 var time : float = 0.0
-var target_asteroids = 10
+var target_asteroids = 1
 var is_spawning_wormhole : bool = false
+var available_health_pickups : int = 3
 
 
 func _ready():
 	%Magnet.player = %Player
 	%Player.magnet = %Magnet
 	%Player.hit.connect(_on_player_hit.bind())
+	%Time.second.connect(_on_second_passed.bind())
+	%Coin.collected.connect(_on_coin_collected.bind())
 
 
 func _physics_process(delta):
@@ -26,23 +29,20 @@ func _physics_process(delta):
 	#if not is_spawning_wormhole:
 		
 		if %Asteroids.get_child_count() < target_asteroids:
-			print("There are only %s asteroids. Spawn Wormhole" % %Asteroids.get_child_count())
+			#print("There are only %s asteroids. Spawn Wormhole" % %Asteroids.get_child_count())
 			_spawn_wormhole()
 
 
 func _spawn_wormhole():
 	is_spawning_wormhole = true
-	var random = RandomNumberGenerator.new()
-	random.randomize()
 	var offset = MARGIN + WORMHOLE_RADIUS
-	var random_position = Vector2(random.randi_range(offset, 1280 - offset), random.randi_range(offset, 800 - offset))
-	print("Trying to create wormhole at %s" % random_position)
+	var random_position = Vector2(Random.integer_between(offset, 1280 - offset), Random.integer_between(offset, 800 - offset))
 	%WormHole.position = random_position
-	#print(%WormHole.position)
 	var required_asteroids : int = target_asteroids - %Asteroids.get_child_count()
-	required_asteroids = min(required_asteroids, 3)
-	print("Trying to create %s asteroids" % required_asteroids)
+	required_asteroids = min(required_asteroids, 5)
 	match required_asteroids:
+		5: %AnimationPlayer.play("wormhole_spawn_5")
+		4: %AnimationPlayer.play("wormhole_spawn_4")
 		3: %AnimationPlayer.play("wormhole_spawn_3")
 		2: %AnimationPlayer.play("wormhole_spawn_2")
 		1: %AnimationPlayer.play("wormhole_spawn_1")
@@ -52,24 +52,63 @@ func _spawn_wormhole():
 
 
 func _finished_wormhole():
-	%WormHole.visible = false
 	is_spawning_wormhole = false
-	print("Removing wormhole")
-	#%WormHole.position = Vector2.ZERO
+
 
 
 func _add_asteroid():
 	var asteroid = load("res://scenes/game/asteroid/asteroid.tscn").instantiate()
 	asteroid.position = %WormHole.position
-	asteroid.hit.connect(_on_asteroid_hit.bind())
 	asteroid.rubble_container = %Rubble
 	%Asteroids.add_child(asteroid)
+
+
+func _add_health_pickup():
+	var pickup = load("res://scenes/game/pickup/health/health.tscn").instantiate()
+	var offset : int = 256
+	pickup.position = Vector2(Random.integer_between(offset, 1280 - offset), Random.integer_between(offset, 800 - offset))
+	pickup.collected.connect(_on_health_collected.bind())
+	%Pickups.add_child(pickup)
+	available_health_pickups -= 1
+
+
+func move_coin():
+	var offset : int = 256
+	%Coin.position = Vector2(Random.integer_between(offset, 1280 - offset), Random.integer_between(offset, 800 - offset))
 
 
 func _on_player_hit():
 	%HealthBar.health -= 1
 
 
-func _on_asteroid_hit():
-	score += 100
-	%Score.text = "Score: %s" % score
+func _on_health_collected():
+	%HealthBar.health += 1
+
+
+func _on_coin_collected():
+	move_coin()
+	%Score.add()
+
+
+func _on_second_passed(second : int):
+	%Score.add()
+	@warning_ignore("integer_division")
+	target_asteroids = min(floor(second / 5) + 1, 20)
+	print("%s out of %s" % [%Asteroids.get_child_count(), target_asteroids])
+	
+	match second:
+		30: %Player.speed = 350
+		60: %Player.speed = 400
+		90: %Player.speed = 450
+		120: %Player.speed = 500
+	
+	if available_health_pickups > 0:
+		if %HealthBar.health < %HealthBar.max_health:
+			var has_health_pickup : bool = false
+			for pickup in %Pickups.get_children():
+				if pickup is HealthPickup:
+					has_health_pickup = true
+		
+			if not has_health_pickup:
+				if second % 8 == 0:
+					_add_health_pickup()

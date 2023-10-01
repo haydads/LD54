@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjppj2y4kca46"]
+
+[ext_resource type="Texture2D" uid="uid://dtycotmghcexu" path="res://assets/textures/asteroids/asteroid_2.svg" id="1_3w32g"]
+[ext_resource type="Script" path="res://scenes/game/asteroid/new_asteroid.gd" id="1_iwlpl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aevs7"]
+friction = 0.0
+bounce = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6ird"]
+radius = 24.0
+
+[node name="NewAsteroid" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 47
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_aevs7")
+script = ExtResource("1_iwlpl")
+
+[node name="Asteroid2" type="Sprite2D" parent="."]
+texture = ExtResource("1_3w32g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f6ird")

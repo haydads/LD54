@@ -1,14 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://bc6305ffaqhbr"]
+[gd_scene load_steps=17 format=3 uid="uid://bc6305ffaqhbr"]
 
 [ext_resource type="PackedScene" uid="uid://c5ftep8hd6gsf" path="res://scenes/game/player/player.tscn" id="1_1eadf"]
 [ext_resource type="Script" path="res://scenes/game/world/world.gd" id="1_esi73"]
 [ext_resource type="PackedScene" uid="uid://s4cwjdqpl634" path="res://scenes/stars/stars.tscn" id="2_4ejt8"]
 [ext_resource type="Script" path="res://scenes/game/void/void.gd" id="2_bk67g"]
 [ext_resource type="PackedScene" uid="uid://xl1erkm3c7ao" path="res://scenes/game/magnet/magnet.tscn" id="2_g37io"]
-[ext_resource type="PackedScene" uid="uid://ckf18i6np50jp" path="res://scenes/game/pickup/coin/coin.tscn" id="5_8o77v"]
 [ext_resource type="PackedScene" uid="uid://ldr2fa3ieyd0" path="res://scenes/game/health/health_bar.tscn" id="6_hfbyb"]
 [ext_resource type="PackedScene" uid="uid://dcvjqmxnr7v61" path="res://scenes/game/time/time.tscn" id="8_712wo"]
-[ext_resource type="PackedScene" uid="uid://5t3n8r45u5kc" path="res://scenes/game/score/score.tscn" id="10_logqd"]
+[ext_resource type="PackedScene" uid="uid://bat7h51kgp20j" path="res://scenes/game/health/pickup/restore_health.tscn" id="9_n5u2l"]
 [ext_resource type="PackedScene" uid="uid://deypj5qj72lkh" path="res://scenes/wormhole/wormhole.tscn" id="11_onpob"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_334cl"]
@@ -87,79 +86,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_ckyoq"]
 resource_name = "wormhole_spawn_2"
-length = 4.5
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WormHole:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 18.8496]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WormHole:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("WormHole:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 3.5, 4.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2, 2.5, 4.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"_add_asteroid"
-}, {
-"args": [],
-"method": &"_add_asteroid"
-}, {
-"args": [],
-"method": &"_finished_wormhole"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("WormHole:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1, 3.5, 4.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(1, 1), Vector2(1, 1), Vector2(0.1, 0.1)]
-}
-
-[sub_resource type="Animation" id="Animation_d1pis"]
-resource_name = "wormhole_spawn_3"
 length = 5.0
 step = 0.5
 tracks/0/type = "value"
@@ -205,12 +131,9 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2, 2.5, 3, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(2, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
-"args": [],
-"method": &"_add_asteroid"
-}, {
 "args": [],
 "method": &"_add_asteroid"
 }, {
@@ -234,87 +157,8 @@ tracks/4/keys = {
 "values": [Vector2(0.1, 0.1), Vector2(1, 1), Vector2(1, 1), Vector2(0.1, 0.1)]
 }
 
-[sub_resource type="Animation" id="Animation_5mdos"]
-resource_name = "wormhole_spawn_4"
-length = 5.5
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WormHole:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 18.8496]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WormHole:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("WormHole:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 4.5, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2, 2.5, 3, 3.5, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"_add_asteroid"
-}, {
-"args": [],
-"method": &"_add_asteroid"
-}, {
-"args": [],
-"method": &"_add_asteroid"
-}, {
-"args": [],
-"method": &"_add_asteroid"
-}, {
-"args": [],
-"method": &"_finished_wormhole"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("WormHole:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1, 4.5, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(1, 1), Vector2(1, 1), Vector2(0.1, 0.1)]
-}
-
-[sub_resource type="Animation" id="Animation_km667"]
-resource_name = "wormhole_spawn_5"
+[sub_resource type="Animation" id="Animation_d1pis"]
+resource_name = "wormhole_spawn_3"
 length = 6.0
 step = 0.5
 tracks/0/type = "value"
@@ -360,15 +204,9 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2, 2.5, 3, 3.5, 4, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(2, 3, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
-"args": [],
-"method": &"_add_asteroid"
-}, {
-"args": [],
-"method": &"_add_asteroid"
-}, {
 "args": [],
 "method": &"_add_asteroid"
 }, {
@@ -399,9 +237,7 @@ tracks/4/keys = {
 _data = {
 "wormhole_spawn_1": SubResource("Animation_i8rrp"),
 "wormhole_spawn_2": SubResource("Animation_ckyoq"),
-"wormhole_spawn_3": SubResource("Animation_d1pis"),
-"wormhole_spawn_4": SubResource("Animation_5mdos"),
-"wormhole_spawn_5": SubResource("Animation_km667")
+"wormhole_spawn_3": SubResource("Animation_d1pis")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk506"]
@@ -448,19 +284,13 @@ polygon = PackedVector2Array(64, 64, 1216, 64, 1216, 736, 64, 736, 64, 64, 0, 0,
 
 [node name="WormHole" parent="." instance=ExtResource("11_onpob")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 position = Vector2(1080, 88)
-scale = Vector2(0.1, 0.1)
+rotation = 7.0686
 
 [node name="Asteroids" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Pickups" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="Coin" parent="Pickups" instance=ExtResource("5_8o77v")]
-unique_name_in_owner = true
-position = Vector2(659, 281)
 
 [node name="Magnet" parent="." instance=ExtResource("2_g37io")]
 unique_name_in_owner = true
@@ -488,28 +318,23 @@ unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Time" type="PanelContainer" parent="."]
+[node name="Score" type="PanelContainer" parent="."]
 offset_left = 64.0
 offset_top = 8.0
 offset_right = 182.0
 offset_bottom = 56.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mkdrx")
 
-[node name="Margin" type="MarginContainer" parent="Time"]
+[node name="Margin" type="MarginContainer" parent="Score"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Time/Margin"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Time" parent="Time/Margin/HBoxContainer" instance=ExtResource("8_712wo")]
+[node name="Time" parent="Score/Margin" instance=ExtResource("8_712wo")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Score" parent="Time/Margin/HBoxContainer" instance=ExtResource("10_logqd")]
-unique_name_in_owner = true
-layout_mode = 2
+[node name="RestoreHealth" parent="." instance=ExtResource("9_n5u2l")]
+position = Vector2(389, 235)

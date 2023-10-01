@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://5t3n8r45u5kc"]
+
+[ext_resource type="Script" path="res://scenes/game/score/score.gd" id="1_lvr6x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4nis"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Score" type="Label"]
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4nis")
+text = "SCORE: 56"
+vertical_alignment = 1
+script = ExtResource("1_lvr6x")
