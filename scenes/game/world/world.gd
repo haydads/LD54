@@ -17,7 +17,7 @@ var available_health_pickups : int = 3
 func _ready():
 	Global.score = 0
 	Global.time = 0
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	%Magnet.player = %Player
 	%Player.magnet = %Magnet
 	%Player.hit.connect(_on_player_hit.bind())
